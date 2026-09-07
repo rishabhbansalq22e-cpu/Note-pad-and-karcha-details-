@@ -22,11 +22,20 @@ jobs:
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@v4
 
+    - name: Create local.properties, dummy env and wrapper
+      run: |
+        touch .env
+        echo "sdk.dir=$ANDROID_HOME" > local.properties
+        gradle wrapper
+        chmod +x gradlew
+
     - name: Build Debug APK
-      run: gradle :app:assembleDebug
+      run: ./gradlew :app:assembleDebug --stacktrace --no-daemon
 
     - name: Upload APK
       uses: actions/upload-artifact@v4
+      if: always()
       with:
         name: app-debug-apk
         path: app/build/outputs/apk/debug/*.apk
+
