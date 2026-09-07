@@ -1,0 +1,8 @@
+{
+  "name": "Remix Notes \u0026 Expenses",
+  "description": "A notepad app with seamless daily expense tracking, categorisation, and daily spending summaries.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
